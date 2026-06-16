@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;background:#03050d;color:#eef1f5;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{margin:0;width:100%;max-width:100%;background:#03050d;color:#eef1f5;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;}
   ::selection{background:#FF3DCB;color:#fff;}
   ::-webkit-scrollbar{width:10px;}
@@ -39,6 +39,15 @@
   .chip:hover{filter:brightness(1.12);transform:translateY(-1px);}
   .card-add:hover{filter:brightness(1.12);}
   .intro-zoom{animation:introZoom 2.7s cubic-bezier(.16,.84,.3,1) forwards;}
+
+  @media (max-width:640px){
+    .hdr-inner{flex-wrap:wrap !important; justify-content:center !important; gap:14px !important; padding:12px 16px !important;}
+    .apolo-nav{flex:1 1 100% !important; order:3 !important; justify-content:center !important; gap:20px !important;}
+    #inicio{padding:64px 16px 56px !important;}
+    #catalogo{padding:20px 16px 72px !important;}
+    .foot-top{padding:44px 16px 26px !important; gap:32px !important;}
+    .foot-bottom{padding:20px 16px 32px !important; justify-content:center !important; text-align:center !important;}
+  }
 </style>
 </head>
 <body>
@@ -49,21 +58,21 @@
 @endphp
 
 <!-- Fondo animado (aurora + estrellas) -->
-<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:linear-gradient(180deg, #03050d 0%, #061024 45%, #07142c 72%, #040912 100%);">
+<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; overflow:hidden; clip-path:inset(0); pointer-events:none; background:linear-gradient(180deg, #03050d 0%, #061024 45%, #07142c 72%, #040912 100%);">
   <div style="position:absolute; inset:0; background-image:radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7), transparent), radial-gradient(1px 1px at 28% 9%, rgba(255,255,255,.5), transparent), radial-gradient(1.5px 1.5px at 47% 22%, rgba(255,255,255,.6), transparent), radial-gradient(1px 1px at 63% 12%, rgba(255,255,255,.55), transparent), radial-gradient(1px 1px at 78% 26%, rgba(255,255,255,.5), transparent), radial-gradient(1.5px 1.5px at 88% 14%, rgba(255,255,255,.6), transparent), radial-gradient(1px 1px at 8% 40%, rgba(255,255,255,.45), transparent), radial-gradient(1px 1px at 38% 38%, rgba(255,255,255,.4), transparent), radial-gradient(1px 1px at 70% 44%, rgba(255,255,255,.4), transparent), radial-gradient(1px 1px at 93% 38%, rgba(255,255,255,.45), transparent); opacity:.6; animation:twinkle 7s ease-in-out infinite;"></div>
   <div style="position:absolute; bottom:-12%; left:8%; width:30vw; height:115vh; background:linear-gradient(to top, transparent 0%, rgba(54,245,142,.28) 38%, rgba(25,227,255,.20) 66%, rgba(70,130,255,.05) 88%, transparent 100%); filter:blur(46px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 30s ease-in-out infinite, shimmer 11s ease-in-out infinite;"></div>
   <div style="position:absolute; bottom:-12%; left:34%; width:26vw; height:120vh; background:linear-gradient(to top, transparent 0%, rgba(36,230,160,.30) 42%, rgba(25,227,255,.22) 70%, transparent 100%); filter:blur(42px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave2 26s ease-in-out infinite, shimmer 9s ease-in-out infinite;"></div>
   <div style="position:absolute; bottom:-15%; left:55%; width:32vw; height:118vh; background:linear-gradient(to top, transparent 0%, rgba(48,240,150,.26) 40%, rgba(40,180,255,.18) 72%, transparent 100%); filter:blur(50px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 34s ease-in-out infinite reverse, shimmer 13s ease-in-out infinite;"></div>
   <div style="position:absolute; bottom:-12%; left:74%; width:24vw; height:112vh; background:linear-gradient(to top, transparent 0%, rgba(60,245,170,.24) 44%, rgba(25,227,255,.16) 74%, transparent 100%); filter:blur(44px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave2 38s ease-in-out infinite, shimmer 10s ease-in-out infinite;"></div>
   <div style="position:absolute; bottom:-18%; left:-6%; width:22vw; height:110vh; background:linear-gradient(to top, transparent 0%, rgba(40,210,200,.20) 46%, rgba(70,130,255,.10) 76%, transparent 100%); filter:blur(48px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 42s ease-in-out infinite, shimmer 12s ease-in-out infinite;"></div>
-  <div style="position:absolute; bottom:-30%; left:50%; transform:translateX(-50%); width:120vw; height:50vh; background:radial-gradient(ellipse at center, rgba(54,245,142,.18), rgba(25,227,255,.08) 45%, transparent 70%); filter:blur(60px); mix-blend-mode:screen; animation:shimmer 14s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-30%; left:50%; transform:translateX(-50%); width:100%; height:50vh; background:radial-gradient(ellipse at center, rgba(54,245,142,.18), rgba(25,227,255,.08) 45%, transparent 70%); filter:blur(60px); mix-blend-mode:screen; animation:shimmer 14s ease-in-out infinite;"></div>
   <div style="position:absolute; inset:0; background:radial-gradient(120% 80% at 50% 24%, rgba(4,7,16,.5), transparent 55%), linear-gradient(180deg, rgba(4,7,16,.4), transparent 28%, transparent 78%, rgba(4,7,16,.45));"></div>
 </div>
 
 <div style="position:relative; z-index:1;">
 
   <header style="position:sticky; top:0; z-index:500; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); background:rgba(8,9,11,.72); border-bottom:1px solid rgba(255,255,255,.06);">
-    <div style="max-width:1200px; margin:0 auto; padding:13px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+    <div class="hdr-inner" style="max-width:1200px; margin:0 auto; padding:13px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
       <div onclick="replayIntro()" title="Reproducir intro" style="display:flex; align-items:center; gap:13px; cursor:pointer;">
         <div style="position:relative; width:46px; height:46px; flex:none;">
           <div style="position:absolute; inset:-2px; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); filter:blur(5px); opacity:.6; animation:spinCW {{ $ringSpeed }}s linear infinite;"></div>
@@ -113,7 +122,7 @@
   </section>
 
   <footer id="contacto" style="border-top:1px solid rgba(255,255,255,.07);">
-    <div style="max-width:1200px; margin:0 auto; padding:56px 32px 30px; display:flex; flex-wrap:wrap; gap:48px; justify-content:space-between;">
+    <div class="foot-top" style="max-width:1200px; margin:0 auto; padding:56px 32px 30px; display:flex; flex-wrap:wrap; gap:48px; justify-content:space-between;">
       <div style="max-width:320px; display:flex; flex-direction:column; gap:18px;">
         <div style="display:flex; align-items:center; gap:13px;">
           <div style="position:relative; width:42px; height:42px; flex:none;">
@@ -144,7 +153,7 @@
         </div>
       </div>
     </div>
-    <div style="max-width:1200px; margin:0 auto; padding:22px 32px 40px; border-top:1px solid rgba(255,255,255,.05); display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center;">
+    <div class="foot-bottom" style="max-width:1200px; margin:0 auto; padding:22px 32px 40px; border-top:1px solid rgba(255,255,255,.05); display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center;">
       <span style="font-size:13px; color:#5f6772;">© 2026 APOLO VIP — Ropa deportiva</span>
       <div style="display:flex; gap:8px; align-items:center;">
         <span style="width:9px; height:9px; border-radius:50%; background:#19E3FF;"></span>
