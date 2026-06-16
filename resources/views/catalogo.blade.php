@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APOLO VIP — Ropa deportiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#03050d;color:#eef1f5;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;}
+  ::selection{background:#FF3DCB;color:#fff;}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:#070809;}
+  ::-webkit-scrollbar-thumb{background:#1c2128;border-radius:8px;}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3038;}
+  @keyframes spinCW{to{transform:rotate(360deg);}}
+  @keyframes introZoom{0%{transform:scale(.012);opacity:0;filter:blur(4px);}16%{opacity:1;filter:blur(0);}100%{transform:scale(1);opacity:1;}}
+  @keyframes introPulse{0%,100%{opacity:.35;}50%{opacity:.8;}}
+  @keyframes wave1{0%{transform:translateX(-2vw) skewX(-7deg) scaleY(1);}50%{transform:translateX(5vw) skewX(6deg) scaleY(1.12);}100%{transform:translateX(-2vw) skewX(-7deg) scaleY(1);}}
+  @keyframes wave2{0%{transform:translateX(2vw) skewX(6deg) scaleY(1.06);}50%{transform:translateX(-6vw) skewX(-7deg) scaleY(.94);}100%{transform:translateX(2vw) skewX(6deg) scaleY(1.06);}}
+  @keyframes shimmer{0%,100%{opacity:.5;}50%{opacity:.95;}}
+  @keyframes twinkle{0%,100%{opacity:.45;}50%{opacity:.8;}}
+
+  .apolo-nav a{text-decoration:none;color:#aab2bd;font-size:14px;font-weight:500;letter-spacing:.5px;transition:color .2s;}
+  .apolo-nav a:hover{color:#fff;}
+  .apolo-cart{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);font-family:'Michroma',sans-serif;font-size:11px;letter-spacing:1px;color:#dfe5ec;cursor:pointer;transition:all .2s;}
+  .apolo-cart:hover{border-color:rgba(25,227,255,.5);box-shadow:0 0 18px rgba(25,227,255,.2);}
+  .btn-primary{text-decoration:none;padding:15px 30px;border-radius:16px;font-family:'Michroma',sans-serif;font-size:13px;letter-spacing:2px;color:#06090c;background:#19E3FF;box-shadow:0 0 30px rgba(25,227,255,.35);transition:all .25s;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(25,227,255,.6);}
+  .btn-ghost{text-decoration:none;padding:15px 30px;border-radius:16px;font-family:'Michroma',sans-serif;font-size:13px;letter-spacing:2px;color:#dfe5ec;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);transition:all .25s;}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.4);transform:translateY(-2px);}
+  .foot-link{text-decoration:none;color:#8b93a0;font-size:14px;transition:color .2s;}
+  .foot-link.cyan:hover{color:#19E3FF;}
+  .foot-link.pink:hover{color:#FF3DCB;}
+  .chip:hover{filter:brightness(1.12);transform:translateY(-1px);}
+  .card-add:hover{filter:brightness(1.12);}
+  .intro-zoom{animation:introZoom 2.7s cubic-bezier(.16,.84,.3,1) forwards;}
+</style>
+</head>
+<body>
+@php
+  $base = asset('catalogo/assets');
+  $ringSpeed = 14;
+  $tagline = 'Ropa deportiva de alta gama para quienes entrenan distinto. Tecnología, ajuste y estilo en cada prenda.';
+@endphp
+
+<!-- Fondo animado (aurora + estrellas) -->
+<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:linear-gradient(180deg, #03050d 0%, #061024 45%, #07142c 72%, #040912 100%);">
+  <div style="position:absolute; inset:0; background-image:radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7), transparent), radial-gradient(1px 1px at 28% 9%, rgba(255,255,255,.5), transparent), radial-gradient(1.5px 1.5px at 47% 22%, rgba(255,255,255,.6), transparent), radial-gradient(1px 1px at 63% 12%, rgba(255,255,255,.55), transparent), radial-gradient(1px 1px at 78% 26%, rgba(255,255,255,.5), transparent), radial-gradient(1.5px 1.5px at 88% 14%, rgba(255,255,255,.6), transparent), radial-gradient(1px 1px at 8% 40%, rgba(255,255,255,.45), transparent), radial-gradient(1px 1px at 38% 38%, rgba(255,255,255,.4), transparent), radial-gradient(1px 1px at 70% 44%, rgba(255,255,255,.4), transparent), radial-gradient(1px 1px at 93% 38%, rgba(255,255,255,.45), transparent); opacity:.6; animation:twinkle 7s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-12%; left:8%; width:30vw; height:115vh; background:linear-gradient(to top, transparent 0%, rgba(54,245,142,.28) 38%, rgba(25,227,255,.20) 66%, rgba(70,130,255,.05) 88%, transparent 100%); filter:blur(46px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 30s ease-in-out infinite, shimmer 11s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-12%; left:34%; width:26vw; height:120vh; background:linear-gradient(to top, transparent 0%, rgba(36,230,160,.30) 42%, rgba(25,227,255,.22) 70%, transparent 100%); filter:blur(42px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave2 26s ease-in-out infinite, shimmer 9s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-15%; left:55%; width:32vw; height:118vh; background:linear-gradient(to top, transparent 0%, rgba(48,240,150,.26) 40%, rgba(40,180,255,.18) 72%, transparent 100%); filter:blur(50px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 34s ease-in-out infinite reverse, shimmer 13s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-12%; left:74%; width:24vw; height:112vh; background:linear-gradient(to top, transparent 0%, rgba(60,245,170,.24) 44%, rgba(25,227,255,.16) 74%, transparent 100%); filter:blur(44px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave2 38s ease-in-out infinite, shimmer 10s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-18%; left:-6%; width:22vw; height:110vh; background:linear-gradient(to top, transparent 0%, rgba(40,210,200,.20) 46%, rgba(70,130,255,.10) 76%, transparent 100%); filter:blur(48px); mix-blend-mode:screen; transform-origin:bottom center; animation:wave1 42s ease-in-out infinite, shimmer 12s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:-30%; left:50%; transform:translateX(-50%); width:120vw; height:50vh; background:radial-gradient(ellipse at center, rgba(54,245,142,.18), rgba(25,227,255,.08) 45%, transparent 70%); filter:blur(60px); mix-blend-mode:screen; animation:shimmer 14s ease-in-out infinite;"></div>
+  <div style="position:absolute; inset:0; background:radial-gradient(120% 80% at 50% 24%, rgba(4,7,16,.5), transparent 55%), linear-gradient(180deg, rgba(4,7,16,.4), transparent 28%, transparent 78%, rgba(4,7,16,.45));"></div>
+</div>
+
+<div style="position:relative; z-index:1;">
+
+  <header style="position:sticky; top:0; z-index:500; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); background:rgba(8,9,11,.72); border-bottom:1px solid rgba(255,255,255,.06);">
+    <div style="max-width:1200px; margin:0 auto; padding:13px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+      <div onclick="replayIntro()" title="Reproducir intro" style="display:flex; align-items:center; gap:13px; cursor:pointer;">
+        <div style="position:relative; width:46px; height:46px; flex:none;">
+          <div style="position:absolute; inset:-2px; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); filter:blur(5px); opacity:.6; animation:spinCW {{ $ringSpeed }}s linear infinite;"></div>
+          <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); animation:spinCW {{ $ringSpeed }}s linear infinite;"></div>
+          <img src="{{ $base }}/apolo-disc.png" alt="APOLO VIP" style="position:absolute; top:3px; left:3px; width:40px; height:40px; border-radius:50%; display:block;">
+        </div>
+        <div style="display:flex; flex-direction:column; line-height:1;">
+          <span style="font-family:'Michroma',sans-serif; font-size:16px; letter-spacing:2px; color:#fff;">APOLO</span>
+          <span style="font-size:9px; letter-spacing:6px; color:#19E3FF; margin-top:4px;">VIP</span>
+        </div>
+      </div>
+      <nav class="apolo-nav" style="display:flex; gap:32px; align-items:center;">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="apolo-cart">
+        <span style="width:6px; height:6px; border-radius:50%; background:#36F58E; box-shadow:0 0 8px #36F58E;"></span>CARRITO · 0
+      </div>
+    </div>
+  </header>
+
+  <section id="inicio" style="max-width:1200px; margin:0 auto; padding:92px 32px 76px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px;">
+    <div style="display:inline-flex; align-items:center; gap:10px; padding:8px 18px; border-radius:999px; border:1px solid rgba(25,227,255,.4); background:rgba(25,227,255,.06); font-size:12px; letter-spacing:3px; color:#7fe9ff; text-transform:uppercase;">
+      <span style="width:7px; height:7px; border-radius:50%; background:#19E3FF; box-shadow:0 0 10px #19E3FF;"></span>Nueva colección · 2026
+    </div>
+    <h1 style="margin:0; font-family:'Michroma',sans-serif; font-weight:400; font-size:clamp(38px,6.5vw,76px); line-height:1.09; letter-spacing:1px; color:#f4f7fa;">MUÉVETE A OTRO<br><span style="color:#19E3FF; text-shadow:0 0 38px rgba(25,227,255,.45);">NIVEL</span></h1>
+    <p style="margin:0; max-width:600px; font-size:17px; line-height:1.6; color:#9aa3ae; text-wrap:pretty;">{{ $tagline }}</p>
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:6px;">
+      <a href="#catalogo" class="btn-primary">VER CATÁLOGO</a>
+      <a href="#contacto" class="btn-ghost">CONTÁCTANOS</a>
+    </div>
+  </section>
+
+  <section id="catalogo" style="max-width:1200px; margin:0 auto; padding:24px 32px 100px;">
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
+      <span style="font-size:12px; letter-spacing:4px; color:#19E3FF; text-transform:uppercase;">Catálogo</span>
+      <h2 style="margin:0; font-family:'Michroma',sans-serif; font-weight:400; font-size:clamp(26px,3.6vw,38px); color:#f0f3f7;">Explora la colección</h2>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:36px;">
+      <div id="apolo-chips" style="display:flex; flex-wrap:wrap; gap:12px;"></div>
+      <span id="apolo-count" style="margin-left:auto; font-size:13px; color:#6f7785;"></span>
+    </div>
+
+    <div id="apolo-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr)); gap:26px;"></div>
+  </section>
+
+  <footer id="contacto" style="border-top:1px solid rgba(255,255,255,.07);">
+    <div style="max-width:1200px; margin:0 auto; padding:56px 32px 30px; display:flex; flex-wrap:wrap; gap:48px; justify-content:space-between;">
+      <div style="max-width:320px; display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:center; gap:13px;">
+          <div style="position:relative; width:42px; height:42px; flex:none;">
+            <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); animation:spinCW {{ $ringSpeed }}s linear infinite;"></div>
+            <img src="{{ $base }}/apolo-disc.png" alt="APOLO VIP" style="position:absolute; top:3px; left:3px; width:36px; height:36px; border-radius:50%; display:block;">
+          </div>
+          <div style="display:flex; flex-direction:column; line-height:1;">
+            <span style="font-family:'Michroma',sans-serif; font-size:15px; letter-spacing:2px; color:#fff;">APOLO</span>
+            <span style="font-size:8px; letter-spacing:6px; color:#19E3FF; margin-top:4px;">VIP</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:14px; line-height:1.6; color:#8b93a0;">Diseñado para moverse. Hecho para destacar. Ropa deportiva de alta gama con identidad propia.</p>
+      </div>
+      <div style="display:flex; gap:56px; flex-wrap:wrap;">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <span style="font-family:'Michroma',sans-serif; font-size:11px; letter-spacing:2px; color:#fff; margin-bottom:4px;">TIENDA</span>
+          <a href="#catalogo" class="foot-link cyan">Camisetas</a>
+          <a href="#catalogo" class="foot-link cyan">Leggings</a>
+          <a href="#catalogo" class="foot-link cyan">Conjuntos</a>
+          <a href="#catalogo" class="foot-link cyan">Accesorios</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <span style="font-family:'Michroma',sans-serif; font-size:11px; letter-spacing:2px; color:#fff; margin-bottom:4px;">AYUDA</span>
+          <a href="#contacto" class="foot-link pink">Envíos</a>
+          <a href="#contacto" class="foot-link pink">Cambios</a>
+          <a href="#contacto" class="foot-link pink">Guía de tallas</a>
+          <a href="#contacto" class="foot-link pink">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1200px; margin:0 auto; padding:22px 32px 40px; border-top:1px solid rgba(255,255,255,.05); display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center;">
+      <span style="font-size:13px; color:#5f6772;">© 2026 APOLO VIP — Ropa deportiva</span>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span style="width:9px; height:9px; border-radius:50%; background:#19E3FF;"></span>
+        <span style="width:9px; height:9px; border-radius:50%; background:#FF3DCB;"></span>
+        <span style="width:9px; height:9px; border-radius:50%; background:#FFE14D;"></span>
+        <span style="width:9px; height:9px; border-radius:50%; background:#36F58E;"></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Intro overlay -->
+<div id="apolo-intro" onclick="skipIntro()" style="position:fixed; inset:0; z-index:9999; background:#050506; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:1; transition:opacity .7s ease;">
+  <div id="apolo-zoom" class="intro-zoom">
+    <div style="position:relative; width:340px; height:340px;">
+      <div style="position:absolute; inset:-16px; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); filter:blur(24px); opacity:.6; animation:spinCW 2.6s linear infinite;"></div>
+      <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg, #19E3FF, #2D7CFF, #FF3DCB, #FFE14D, #36F58E, #19E3FF); animation:spinCW 2.6s linear infinite;"></div>
+      <img src="{{ $base }}/apolo-disc.png" alt="APOLO VIP" style="position:absolute; top:9px; left:9px; width:322px; height:322px; border-radius:50%; display:block;">
+    </div>
+  </div>
+  <div style="position:absolute; bottom:42px; left:0; right:0; text-align:center; font-family:'Michroma',sans-serif; font-size:10px; letter-spacing:5px; color:#5a626d; animation:introPulse 2s ease-in-out infinite;">TOCA PARA SALTAR</div>
+</div>
+
+<script>
+const BASE = @json($base);
+const CC = { Camisetas:'#19E3FF', Leggings:'#FF3DCB', Shorts:'#FFE14D', Conjuntos:'#2D7CFF', Sudaderas:'#36F58E', Accesorios:'#19E3FF' };
+const CATS = ['Todos','Camisetas','Leggings','Shorts','Conjuntos','Sudaderas','Accesorios'];
+
+const PRODUCTS = [
+  { id:'p1',  name:'Camiseta Tricolor Home', category:'Camisetas',  price:'$159.900', sizes:['S','M','L','XL'],      fabric:'Poliéster reciclado AEROREADY de secado rápido.',         img:'products/camiseta-tricolor-1.png' },
+  { id:'p2',  name:'Camiseta Tricolor Fan',  category:'Camisetas',  price:'$139.900', sizes:['S','M','L','XL'],      fabric:'Tejido transpirable ligero con escudo bordado.',          img:'products/camiseta-tricolor-2.png' },
+  { id:'p3',  name:'Legging Sculpt Pro',     category:'Leggings',   price:'$129.900', sizes:['XS','S','M','L'],      fabric:'Nylon/elastano compresivo de alta densidad.',             img:'products/legging-1.png' },
+  { id:'p4',  name:'Legging Seamless Noir',  category:'Leggings',   price:'$134.900', sizes:['XS','S','M','L','XL'], fabric:'Supplex sin costuras, tiro alto y totalmente opaco.',      img:'products/legging-2.png' },
+  { id:'p5',  name:'Short Court Blanco',     category:'Shorts',     price:'$79.900',  sizes:['S','M','L','XL'],      fabric:'Poliéster ligero con paneles de malla ventilada.',        img:'products/short-blanco.png' },
+  { id:'p6',  name:'Short Training Gris',    category:'Shorts',     price:'$74.900',  sizes:['S','M','L','XL'],      fabric:'Microfibra con malla lateral y cordón ajustable.',        img:'products/short-gris.png' },
+  { id:'p7',  name:'Conjunto Active Skort',  category:'Conjuntos',  price:'$189.900', sizes:['XS','S','M','L'],      fabric:'Top manga larga + falda-short en tela técnica elástica.', img:'products/conjunto-mujer.png' },
+  { id:'p8',  name:'Conjunto Kids Texture',  category:'Conjuntos',  price:'$119.900', sizes:['4','6','8','10','12'], fabric:'Camiseta + short en punto texturizado de algodón.',       img:'products/conjunto-nino.png' },
+  { id:'p9',  name:'Hoodie Eclipse Negro',   category:'Sudaderas',  price:'$179.900', sizes:['S','M','L','XL'],      fabric:'French terry premium de corte oversize.',                 img:'products/sudadera-negra.png' },
+  { id:'p10', name:'Hoodie Zip Taupe',       category:'Sudaderas',  price:'$169.900', sizes:['S','M','L','XL'],      fabric:'Algodón cepillado con cremallera completa y capucha.',    img:'products/sudadera-taupe.png' },
+  { id:'p11', name:'Set Collar Lúmina',      category:'Accesorios', price:'$59.900',  sizes:['Única'],               fabric:'Collar en Y y aretes esfera con baño de oro 18k.',        img:'products/set-collar.png' },
+  { id:'p12', name:'Set Cadena Orbe',        category:'Accesorios', price:'$49.900',  sizes:['Única'],               fabric:'Cadena de eslabón fino + aretes esfera dorados.',         img:'products/set-cadena.png' }
+];
+
+let activeCategory = 'Todos';
+let flipped = {};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function renderChips(){
+  const wrap = document.getElementById('apolo-chips');
+  const common = "padding:11px 22px;border-radius:999px;font-size:13px;letter-spacing:1px;cursor:pointer;transition:all .25s ease;font-family:'Space Grotesk',sans-serif;white-space:nowrap;text-transform:uppercase;outline:none;";
+  wrap.innerHTML = CATS.map(c => {
+    const isA = activeCategory === c;
+    const col = c === 'Todos' ? '#cfd6df' : CC[c];
+    const style = isA
+      ? common + `color:#06080a;background:${col};border:1px solid ${col};box-shadow:0 0 22px ${col}66;font-weight:600;`
+      : common + 'color:#9aa3ae;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.10);font-weight:500;';
+    return `<button class="chip" data-cat="${esc(c)}" style="${style}">${esc(c)}</button>`;
+  }).join('');
+  wrap.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => setCategory(b.dataset.cat)));
+}
+
+function renderGrid(){
+  const list = activeCategory === 'Todos' ? PRODUCTS : PRODUCTS.filter(p => p.category === activeCategory);
+  const face = "position:absolute;inset:0;border-radius:30px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;";
+  const grid = document.getElementById('apolo-grid');
+
+  grid.innerHTML = list.map(p => {
+    const accent = CC[p.category];
+    const isF = !!flipped[p.id];
+    const inner = `position:relative;width:100%;height:100%;transition:transform .85s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;transform:${isF ? 'rotateY(180deg)' : 'rotateY(0deg)'};`;
+    const frontStyle = face + 'background:#0e1116;border:1px solid rgba(255,255,255,.07);';
+    const backStyle = face + `transform:rotateY(180deg);background:linear-gradient(160deg,#11151b,#0a0d11);border:1px solid ${accent}55;box-shadow:inset 0 0 46px ${accent}14;padding:26px 24px;gap:14px;justify-content:space-between;`;
+    const imgStyle = `flex:1;position:relative;overflow:hidden;background-color:#eef0f3;background-image:url('${BASE}/${p.img}');background-size:cover;background-position:center;`;
+    const catLabel = `font-size:11px;letter-spacing:3px;text-transform:uppercase;color:${accent};font-weight:600;`;
+    const priceStyle = `font-family:'Michroma',sans-serif;font-size:28px;color:${accent};text-shadow:0 0 24px ${accent}66;line-height:1;`;
+    const sizeChip = `border:1px solid ${accent}66;color:#e3e8ee;padding:7px 12px;border-radius:12px;font-size:13px;background:${accent}12;`;
+    const btn = `margin-top:2px;padding:14px;border-radius:16px;border:1px solid ${accent};background:${accent}16;color:${accent};font-family:'Michroma',sans-serif;font-size:11px;letter-spacing:2px;cursor:pointer;text-align:center;`;
+
+    const sizes = p.sizes.map(s => `<span style="${sizeChip}">${esc(s)}</span>`).join('');
+
+    return `
+    <div class="apolo-card" data-id="${p.id}" style="perspective:1600px;height:452px;cursor:pointer;">
+      <div class="card-inner" style="${inner}">
+        <div style="${frontStyle}">
+          <div style="${imgStyle}">
+            <div style="position:absolute;top:14px;left:14px;padding:5px 11px;border-radius:999px;background:rgba(6,8,11,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);">
+              <span style="${catLabel}">${esc(p.category)}</span>
+            </div>
+            <div style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(6,8,11,.62);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;">↻</div>
+          </div>
+          <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;background:rgba(9,11,15,.7);border-top:1px solid rgba(255,255,255,.06);">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#f0f3f7;">${esc(p.name)}</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#8b93a0;">Toca para ver detalles<span style="color:#19E3FF;">↻</span></div>
+          </div>
+        </div>
+        <div style="${backStyle}">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="${catLabel}">${esc(p.category)}</span>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;color:#f3f6fa;line-height:1.15;">${esc(p.name)}</div>
+          </div>
+          <div style="${priceStyle}">${esc(p.price)}</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-size:11px;letter-spacing:2px;color:#7d8593;text-transform:uppercase;">Tallas disponibles</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">${sizes}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:11px;letter-spacing:2px;color:#7d8593;text-transform:uppercase;">Tela / Material</span>
+            <span style="font-size:14px;color:#cdd4dd;line-height:1.45;">${esc(p.fabric)}</span>
+          </div>
+          <div class="card-add" style="${btn}">AÑADIR AL CARRITO</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  grid.querySelectorAll('.apolo-card').forEach(card => {
+    card.addEventListener('click', () => toggle(card.dataset.id));
+  });
+
+  document.getElementById('apolo-count').textContent = list.length + ' productos';
+}
+
+function setCategory(c){ activeCategory = c; flipped = {}; renderChips(); renderGrid(); }
+function toggle(id){
+  flipped[id] = !flipped[id];
+  // Solo actualizamos el transform del nodo existente para que la animación de giro se reproduzca
+  const inner = document.querySelector('.apolo-card[data-id="' + id + '"] .card-inner');
+  if (inner) inner.style.transform = flipped[id] ? 'rotateY(180deg)' : 'rotateY(0deg)';
+}
+
+// ---- Intro ----
+let t1, t2;
+function startIntro(){
+  clearTimeout(t1); clearTimeout(t2);
+  const el = document.getElementById('apolo-intro');
+  const zoom = document.getElementById('apolo-zoom');
+  el.style.display = 'flex';
+  el.style.opacity = '1';
+  // reinicia la animación de zoom quitando y re-aplicando la clase (force reflow en medio)
+  zoom.classList.remove('intro-zoom');
+  void zoom.offsetWidth;
+  zoom.classList.add('intro-zoom');
+  t1 = setTimeout(() => { el.style.opacity = '0'; }, 2900);
+  t2 = setTimeout(() => { el.style.display = 'none'; }, 3650);
+}
+function skipIntro(){
+  clearTimeout(t1); clearTimeout(t2);
+  const el = document.getElementById('apolo-intro');
+  el.style.opacity = '0';
+  t2 = setTimeout(() => { el.style.display = 'none'; }, 600);
+}
+function replayIntro(){ startIntro(); }
+
+renderChips();
+renderGrid();
+startIntro();
+</script>
+</body>
+</html>
