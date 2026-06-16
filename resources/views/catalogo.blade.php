@@ -9,9 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;overflow-x:hidden;}
-  body{margin:0;width:100%;max-width:100%;background:#03050d;color:#eef1f5;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip;}
+  body{margin:0;width:100%;max-width:100%;background:#03050d;color:#eef1f5;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;}
   a{color:inherit;}
+  img{max-width:100%;}
   ::selection{background:#FF3DCB;color:#fff;}
   ::-webkit-scrollbar{width:10px;}
   ::-webkit-scrollbar-track{background:#070809;}
@@ -44,7 +45,10 @@
     .hdr-inner{flex-wrap:wrap !important; justify-content:center !important; gap:14px !important; padding:12px 16px !important;}
     .apolo-nav{flex:1 1 100% !important; order:3 !important; justify-content:center !important; gap:20px !important;}
     #inicio{padding:64px 16px 56px !important;}
+    #inicio h1{font-size:clamp(30px,9vw,48px) !important;}
     #catalogo{padding:20px 16px 72px !important;}
+    #apolo-grid{grid-template-columns:1fr !important; gap:20px !important;}
+    .apolo-card{height:420px !important;}
     .foot-top{padding:44px 16px 26px !important; gap:32px !important;}
     .foot-bottom{padding:20px 16px 32px !important; justify-content:center !important; text-align:center !important;}
   }
@@ -118,7 +122,7 @@
       <span id="apolo-count" style="margin-left:auto; font-size:13px; color:#6f7785;"></span>
     </div>
 
-    <div id="apolo-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr)); gap:26px;"></div>
+    <div id="apolo-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px,100%),1fr)); gap:24px;"></div>
   </section>
 
   <footer id="contacto" style="border-top:1px solid rgba(255,255,255,.07);">
